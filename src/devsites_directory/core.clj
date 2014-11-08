@@ -2,18 +2,17 @@
   (:require [me.raynes.fs :as fs])
   (:gen-class))
 
-(defn find-sites [site-root]
-  (me.raynes.fs/list-dir site-root))
-
-(defn print-site-link [site]
-  (println (str "<a href=\"http://" site "\">" site "</a>")))
-
 (defn -main [& args]
   (println "Reading sites...")
-  (loop [remaining-sites (find-sites (first args)) final-sites []]
-    (if (empty? remaining-sites)
-      final-sites
-      (let [[site & remaining] remaining-sites
-            final-sites (conj final-sites site)]
-        (print-site-link site)
-        (recur remaining final-sites)))))
+  (when-not (first args)
+    (binding [*out* *err*] (println "missing directory argument"))
+    (System/exit 1))
+  (let [dir? (complement fs/file?)
+        create-site-link #(format "<a href=\"http://%s\">%s</a>" % %)
+        dirs (->> (first args)
+                  fs/list-dir
+                  (filter dir?)
+                  (map create-site-link))]
+    (doseq [dir dirs]
+      (println dir))))
+
