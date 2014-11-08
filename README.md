@@ -4,33 +4,21 @@ FIXME: description
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Download from https://github.com/seankibler/devsite-directory
 
 ## Usage
 
-FIXME: explanation
+    $ java -jar devsites-directory-0.1.0-standalone.jar directory
 
-    $ java -jar devsites-directory-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
+## Example
+    $ java -jar devsites-directory-0.1.0-standalone.jar doc
 
 ### Bugs
 
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+* Its quite stupid currently.
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 Sean Kibler
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or any later version.
